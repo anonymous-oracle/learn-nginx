@@ -1,0 +1,10 @@
+
+zone "main.com" {
+    type master;
+    file "/etc/bind/zone/main.com";
+};
+
+zone "secondary.com" {
+    type master;
+    file "/etc/bind/zone/secondary.com";
+};

@@ -1,0 +1,8 @@
+FROM ubuntu
+RUN apt update && apt -y upgrade && apt -y install build-essential vim htop procutils apt-transport-https ca-certificates curl vim software-properties-common
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+RUN apt update && apt -y install docker-ce
+COPY . /app/learn-nginx
+WORKDIR /app/learn-nginx
+# EXPOSE 80

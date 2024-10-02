@@ -1,0 +1,14 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: nginx
+    networks:
+      - nginx-network
+    ports:
+      - "8080:80"
+
+networks:
+  nginx-network:
+    driver: bridge

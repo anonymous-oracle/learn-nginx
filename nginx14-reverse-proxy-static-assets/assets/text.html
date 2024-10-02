@@ -1,0 +1,30 @@
+<!-- This will be in the location /var/www/websites on the nginx container. Also refer to the virtual.conf file -->
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>nginx1</title>
+</head>
+<body>
+    
+    <h1><a href="./sample.txt" id="text-link">Here's some text</a></h1>
+    <script>
+        document.getElementById('text-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            fetch('sample.txt')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('text-content').textContent = data;
+                })
+                .catch(error => console.error('Error fetching the text file:', error));
+        });
+    </script>
+    <p id="text-content"></p>
+    <footer>
+        <p>Hope you liked this short demo</p>
+    </footer>
+    <a href="/">Back to home</a>
+</body>
+</html>

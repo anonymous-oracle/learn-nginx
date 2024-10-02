@@ -1,0 +1,21 @@
+services:
+  nginx:
+    build:
+      context: ./nginx/
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/html/:/usr/share/nginx/html/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+  dns:
+    build:
+      context: ./dns/
+    restart: always
+    privileged: true
+    ports:
+      - 53:53
+      - 53:53/udp
+    volumes:
+      - ./dns/named.conf:/etc/bind/named.conf
+      - ./dns/zone/:/etc/bind/zone/
+    # command: systemctl start bind9

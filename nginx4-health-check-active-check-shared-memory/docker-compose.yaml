@@ -1,0 +1,46 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: nginx
+    networks:
+      - nginx-network
+    ports:
+      - "8080:80"
+    # volumes:
+      # - ./nginx.conf:/etc/nginx/nginx.conf
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.app
+    container_name: backend
+    networks:
+      - nginx-network
+    # ports:
+    #   - "8000:8000" # reverse proxy mapped in nginx.conf/default.conf
+
+  backend2:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.app2
+    container_name: backend2
+    networks:
+      - nginx-network
+    # ports:
+    #   - "8000:8000" # reverse proxy mapped in nginx.conf/default.conf
+    
+  backend3:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.app3
+    container_name: backend3
+    networks:
+      - nginx-network
+    # ports:
+    #   - "8000:8000" # reverse proxy mapped in nginx.conf/default.conf
+
+networks:
+  nginx-network:
+    driver: bridge

@@ -1,0 +1,12 @@
+## LearningMode does not block but will log requests that satisfy the rules for WAP malicious events, comment out LearningMode to view proper functionality
+## LearningMode;
+SecRulesEnabled;
+DeniedUrl "/deniedUrl.txt";
+
+
+## Check Naxsi rules
+CheckRule "$SQL >= 8" BLOCK;
+CheckRule "$RFI >= 8" BLOCK;
+CheckRule "$TRAVERSAL >= 4" BLOCK;
+CheckRule "$EVADE >= 4" BLOCK;
+CheckRule "$XSS >= 8" BLOCK;

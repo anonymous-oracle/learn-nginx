@@ -1,0 +1,29 @@
+html {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    color-scheme: light dark;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: normal;
+}
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}

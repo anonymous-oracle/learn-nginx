@@ -1,0 +1,26 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        NO_CACHE: "1720338000"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+  dns:
+    # build:
+    #   context: ./dns
+    image: ubuntu/bind9
+    restart: always
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./dns/config:/etc/bind
+      # - ./dns/config/named.conf.options:/etc/bind/named.conf.options
+      - ./dns/zone:/etc/bind/zone
+    environment:
+      - BIND9_USER=root
+    command: named -c /etc/bind/named.conf -g -u bind

@@ -1,0 +1,6 @@
+options {
+  directory "/var/cache/bind";
+  allow-transfer { "none"; };
+  allow-query { localhost; };
+  listen-on port 53 { 127.0.0.1; };
+};

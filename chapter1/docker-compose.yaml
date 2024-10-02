@@ -1,0 +1,11 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NO_CACHE: "1720338000"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html

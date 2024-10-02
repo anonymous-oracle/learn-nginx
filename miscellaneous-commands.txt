@@ -1,0 +1,3 @@
+ab -n 20 -c 4 http://127.0.0.1:8080/ # to test the reverse proxy using Apache Benchmark
+curl -I localhost:8080/image.png # fetches the header of the response
+tcpdump -A -s 9999 -i eth0 port 80 # to capture packets through a network interface on a given port

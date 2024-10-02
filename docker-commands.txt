@@ -1,0 +1,25 @@
+docker buildx build -t learn-nginx --no-cache .
+docker buildx build -t learn-nginx .
+docker buildx build . -t nginx1 && docker container run -itd -p 8080:80 --name=nginx1 nginx1 && docker exec -it nginx1 /bin/bash
+docker commit 823972db228c nginx-checkpoint
+docker container commit 8c48aa238212 nginx1
+docker container prune -f && docker image prune -af && docker system prune -f && docker network prune -f && docker system prune --volumes -f
+docker container run -it -d --name=test learn-nginx && docker container exec -it test bash
+docker container run -it -d --privileged --name=test learn-nginx && docker container exec -it test bash
+docker container run -itd -p 8080:80 --name=nginx1 ubuntu/nginx && docker exec -it nginx1 /bin/bash
+docker exec -it learn-nginx bash
+docker image load -q -i ~/docker-images/nginx1.tar
+docker info
+docker network create --driver bridge nginx-network
+docker network prune
+docker ps -a -q | xargs -I {} docker container stop {} &&  docker ps -a -q | xargs -I {} docker rm  {}
+docker ps -a -q | xargs -I {} docker container stop {} &&  docker ps -a -q | xargs -I {} docker rm  {} && docker image ls -a -q | xargs -I {} docker rmi -f {}
+docker ps -a -q | xargs -I {} docker container stop {} &&  docker ps -a -q | xargs -I {} docker rm  {} && docker image ls -a -q | xargs -I {} docker rmi -f {} && docker container prune -f && docker image prune -af && docker system prune -f && docker network prune -f && docker system prune --volumes -f
+docker save -o learn-nginx.tar learn-nginx
+docker system prune
+docker volume prune
+docker-compose up -d
+docker container run -itd --name nginx  nginx25-compiling-nginx-from-source-nginx
+docker container run -itd --name nginx  nginx25-compiling-nginx-from-source-nginx bash
+docker compose --env-file .env up --build
+docker ps -a -q | xargs -I {} docker container stop {} &&  docker ps -a -q | xargs -I {} docker rm -f  {} && docker image ls -a -q | xargs -I {} docker rmi -f {} && docker container prune -f && docker image prune -af && docker system prune -f && docker network prune -f && docker system prune --volumes -f

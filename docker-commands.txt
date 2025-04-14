@@ -23,3 +23,4 @@ docker container run -itd --name nginx  nginx25-compiling-nginx-from-source-ngin
 docker container run -itd --name nginx  nginx25-compiling-nginx-from-source-nginx bash
 docker compose --env-file .env up --build
 docker ps -a -q | xargs -I {} docker container stop {} &&  docker ps -a -q | xargs -I {} docker rm -f  {} && docker image ls -a -q | xargs -I {} docker rmi -f {} && docker container prune -f && docker image prune -af && docker system prune -f && docker network prune -f && docker system prune --volumes -f
+docker ps -a --size
